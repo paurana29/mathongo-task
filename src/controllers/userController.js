@@ -36,7 +36,7 @@ const addUsers = async (req, res) => {
                 });
                 
                 await newUser.save();
-                publishToQueue({ email: newUser.email, message: 'Hi from Mathongo!' });
+                publishToQueue({ email: newUser.email, subject: 'Welcome Mail!', message: 'Hi from Mathongo!' });
                 successCount++;
             } catch (error) {
                 errors.push({ user, error: error.message });

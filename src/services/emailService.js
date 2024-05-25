@@ -9,12 +9,13 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-exports.sendEmail = async (email, message) => {
+exports.sendEmail = async (email, subject, message) => {
+    if(!subject) subject = "Default Subject"
     try {
         await transporter.sendMail({
             from: process.env.EMAIL,
             to: email,
-            subject: 'Mathongo Task!',
+            subject,
             text: message
         });
     } catch (error) {

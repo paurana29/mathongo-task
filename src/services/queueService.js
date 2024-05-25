@@ -25,7 +25,7 @@ exports.consumeQueue = async () => {
     }
     channel.consume(rabbitMQ.queueName, (msg) => {
         const message = JSON.parse(msg.content.toString());
-        sendEmail(message.email, message.message);
+        sendEmail(message.email, message.subject, message.message);
         channel.ack(msg);
     });
 };
