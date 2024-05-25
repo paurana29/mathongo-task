@@ -1,7 +1,9 @@
+require('dotenv').config();
+
 module.exports = {
-    mongoURI: 'mongodb://localhost:27017/mathongo',
+    mongoURI: process.env.MONGO_URI || 'mongodb://localhost:27017/mathongo',
     rabbitMQ: {
-        url: 'amqp://localhost',
+        url: process.env.RABBITMQ_URI || 'amqp://localhost',
         queueName: 'emailQueue'
     }
 };
